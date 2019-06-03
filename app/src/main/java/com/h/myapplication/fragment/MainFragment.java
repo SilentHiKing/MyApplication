@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import com.h.myapplication.R;
@@ -40,6 +41,7 @@ public class MainFragment extends BaseFragment {
     private void initView() {
         mViewPager.setAdapter(mTabFragmentPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+        Log.d("hello",System.currentTimeMillis()+"");
     }
 
 

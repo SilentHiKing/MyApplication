@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hiking.common">
+
+    <application>
+        <provider
+            android:name=".sharepreference.SpContentProvider"
+            android:authorities="sharepreference.spcontentprovider"
+            android:exported="true" />
+    </application>
+
+</manifest>

@@ -1,0 +1,130 @@
+/**
+ * Shared file between builds so that they can use the same dependencies and maven repositories.
+ */
+
+def versions = [:]
+versions.support = "28.0.0"
+versions.constraint_layout = "1.1.3"
+versions.junit = "4.12"
+versions.test_runner = "1.0.2"
+versions.test_espresso = "3.0.2"
+versions.multidex = "1.0.2"
+versions.arouter_api = "1.4.0"
+versions.arouter_compile = "1.2.1"
+versions.arouter_register = "1.0.0"
+versions.gradle = "3.1.4"
+versions.retrofit = '2.4.0'
+versions.rxjava = '2.2.3'
+versions.rxandroid = '2.1.0'
+versions.glide = '4.8.0'
+versions.tvplayer = '5.0.1.253'
+versions.playerx = '5.0.1.253'
+versions.butterknife = '9.0.0-rc1'
+versions.eventbus = '3.1.1'
+versions.statistic = "3.4.6.4"
+versions.tinker = "1.9.9"
+versions.bugly = "2.6.5"
+versions.bugly_native = "3.3.1"
+versions.arch = "1.1.1"
+
+def deps = [:]
+ext.deps = deps
+
+deps.versions = versions
+
+//support版本
+def support = [:]
+support.appcompat_v7 = "com.android.support:appcompat-v7:${versions.support}"
+support.design = "com.android.support:design:${versions.support}"
+support.tv_provider = "com.android.support:support-tv-provider:${versions.support}"
+support.recyclerview = "com.android.support:recyclerview-v7:${versions.support}"
+support.cardview = "com.android.support:cardview-v7:${versions.support}"
+support.v4 = "com.android.support:support-v4:${versions.support}"
+support.constraint = "com.android.support.constraint:constraint-layout:${versions.constraint_layout}"
+support.multidex = "com.android.support:multidex:${versions.multidex}"
+deps.support = support
+
+//test版本
+def test = [:]
+test.runner = "com.android.support.test:runner:${versions.test_runner}"
+test.espresso = "com.android.support.test.espresso:espresso-core:${versions.test_espresso}"
+deps.test = test
+
+//junit版本
+def junit = "junit:junit:${versions.junit}"
+deps.junit = junit
+
+//ARouter版本
+def arouter = [:]
+arouter.api = "com.alibaba:arouter-api:${versions.arouter_api}"
+arouter.compile = "com.alibaba:arouter-compiler:${versions.arouter_compile}"
+arouter.register = "com.alibaba:arouter-register:${versions.arouter_register}"
+deps.arouter = arouter
+
+//gradle版本
+def gradle = "com.android.tools.build:gradle:${versions.gradle}"
+deps.gradle = gradle
+
+//retrofit版本
+def retrofit = [:]
+retrofit.api = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+retrofit.gson_converter = "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+retrofit.scalars_converter = "com.squareup.retrofit2:converter-scalars:${versions.retrofit}"
+retrofit.adapter_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+deps.retrofit = retrofit
+
+//RxJava版本
+def rxjava = "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
+deps.rxjava = rxjava
+
+//RxAndroid版本
+def rxandroid = "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
+deps.rxandroid = rxandroid
+
+//Glide版本
+def glide = [:]
+glide.api = "com.github.bumptech.glide:glide:${versions.glide}"
+glide.compile = "com.github.bumptech.glide:compiler:${versions.glide}"
+glide.annotations = "com.github.bumptech.glide:annotations:${versions.glide}"
+deps.glide = glide
+
+
+//butterknife版本
+def butterknife = [:]
+butterknife.gradle_plugin = "com.jakewharton:butterknife-gradle-plugin:${versions.butterknife}"
+butterknife.implementation = "com.jakewharton:butterknife:${versions.butterknife}"
+butterknife.annotations = "com.jakewharton:butterknife-compiler:${versions.butterknife}"
+deps.butterknife = butterknife
+
+//eventbus
+def eventbus = [:]
+eventbus.implementation = "org.greenrobot:eventbus:${versions.eventbus}"
+deps.eventbus = eventbus
+
+//arch
+def arch = [:]
+deps.arch = arch
+arch.lifecycle_extensions = "android.arch.lifecycle:extensions:${versions.arch}"
+arch.lifecycle_compiler = "android.arch.lifecycle:compiler:${versions.arch}"
+arch.room_runtime = "android.arch.persistence.room:runtime:${versions.arch}"
+arch.room_compiler = "android.arch.persistence.room:compiler:${versions.arch}"
+
+
+//编译版本
+def build_versions = [:]
+build_versions.MIN_SDK = 21
+build_versions.TARGET_SDK = 22
+build_versions.COMPLIE = 28
+build_versions.BUILD_TOOLS = "28.0.0"
+ext.build_versions = build_versions
+
+def props = new Properties()
+file("gradle.properties").withInputStream { props.load(it) }
+// app 版本
+def app_version = [:]
+app_version.VERSION_CODE = props.getProperty("VERSION_CODE") as int
+app_version.VERISON_NAME = props.getProperty("VERSION_NAME")
+ext.app_version = app_version
+
+ext.APP_PACKAGE_NAME = "com.h.myapplication"
+
