@@ -55,6 +55,19 @@ dependencies {
     api deps.retrofit.scalars_converter
     api deps.retrofit.adapter_rxjava2
     implementation project(path: ':common')
+    implementation project(path: ':compiler')
+    implementation project(path: ':annotation')
+
+    /*compileOnly   'org.projectlombok:lombok:1.18.6'//添加lombok依赖
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'*/
 
 
 }
+/*
+def generatedSrcRoot = file("${buildDir}/generated/sources/annotationProcessor/java")
+
+task deleteGeneratedSources(type: Delete) {
+    delete generatedSrcRoot
+}
+
+tasks.withType(JavaCompile) { it.dependsOn('deleteGeneratedSources') }*/
