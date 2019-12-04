@@ -52,7 +52,7 @@ public class MainFragment extends BaseFragment {
         for (int i = 0; i < length; i++) {
             switch (i) {
                 case 0:
-                    mFragments.add(new ContentProviderFragement());
+                    mFragments.add(new SkinFragement());
                     break;
                 case 1:
                     mFragments.add(new RecyclerFragement());
@@ -62,6 +62,10 @@ public class MainFragment extends BaseFragment {
                     break;
                 case 3:
                     mFragments.add(new TestTvProviderFragement());
+                    break;
+                case 4:
+                    mFragments.add(new ContentProviderFragement());
+
                     break;
                 default:
                     mFragments.add(new DefaultFragment(mTabTittle[i]));

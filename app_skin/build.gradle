@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion build_versions.COMPLIE
+    buildToolsVersion build_versions.BUILD_TOOLS = "28.0.0"
+
+
+    defaultConfig {
+        applicationId "com.hiking.app_skin"
+        minSdkVersion build_versions.MIN_SDK
+        targetSdkVersion build_versions.TARGET_SDK
+        versionCode app_version.VERSION_CODE
+        versionName app_version.VERSION_NAME
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation deps.support.appcompat_v7
+
+}

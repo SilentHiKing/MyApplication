@@ -18,4 +18,7 @@
     <string name="sure">sure</string>
     <string name="tip">请输入查询语句</string>
     <string name="test_tv_provider">测试数据库</string>
+    <string name="change_skin">切换皮肤</string>
+    <string name="type_skin">默认皮肤</string>
+    <string name="typeface"></string>
 </resources>

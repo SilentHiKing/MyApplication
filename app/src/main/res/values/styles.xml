@@ -11,6 +11,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="skinTypeface">@string/typeface</item>
 
         <!--<item name="android:windowIsTranslucent">@null</item>
         <item name="android:windowDisablePreview">true</item>-->
@@ -18,5 +19,6 @@
         <!--<item name="android:windowBackground">@mipmap/ic_launcher_round</item>-->
 
     </style>
+
 
 </resources>

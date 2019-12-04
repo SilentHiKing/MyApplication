@@ -6,9 +6,7 @@ import android.util.Log;
 /**
  * Log工具，根据build任务决定log级别
  * 只有ERROR级别的log才会写入文件
- * 默认路径为com.pptv.tvsports.feedback.AppLogManager#cacheLog
  *
- * @author menglu
  */
 public final class TLog {
 

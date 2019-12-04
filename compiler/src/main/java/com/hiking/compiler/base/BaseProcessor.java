@@ -25,7 +25,7 @@ public abstract class BaseProcessor extends AbstractProcessor {
     // apt 相关类
     Filer mFiler;//文件相关的辅助类
     Elements mElements;//元素相关的辅助类
-    Messager mMessager;//日志相关的辅助类
+    public Messager mMessager;//日志相关的辅助类
     // javac 编译器相关类
     public Trees mTrees;
     public TreeMaker mTreeMaker;

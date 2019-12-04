@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">app_skin</string>
+    <string name="typeface">global.ttf</string>
+    <string name="type_skin">皮肤一、隶书</string>
+</resources>
