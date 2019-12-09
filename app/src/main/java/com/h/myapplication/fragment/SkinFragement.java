@@ -66,14 +66,14 @@ public class SkinFragement extends BaseFragment {
 
     private void selectSkin(Skin skin) {
         File theme = new File(getContext().getFilesDir(), "theme");
-        Log.d(TAG,theme.getAbsolutePath());
+        TLog.d(theme.getAbsolutePath());
         if (theme.exists() && theme.isFile()) {
             theme.delete();
         }
         theme.mkdirs();
         File skinFile = skin.getSkinFile(theme);
         if (skinFile.exists()) {
-            Log.d(TAG, "SkinActivity selectSkin: " + "皮肤包已存在，开始换肤");
+            TLog.d(TAG, "SkinActivity selectSkin: " + "皮肤包已存在，开始换肤");
             return;
         }
         TLog.d(TAG, "SkinActivity selectSkin: " + "皮肤包不存在，开始下载");

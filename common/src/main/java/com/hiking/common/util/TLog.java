@@ -99,7 +99,7 @@ public final class TLog {
         if (getTagLevel() == Log.ERROR) {
             return "";
         }
-        StackTraceElement caller = new Throwable().getStackTrace()[2];
+        StackTraceElement caller = Thread.currentThread().getStackTrace()[4];
         String tag = "%s.%s(L:%d)";
         String callerClazzName = caller.getClassName();
         callerClazzName = callerClazzName.substring(callerClazzName.lastIndexOf(".") + 1);
