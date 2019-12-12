@@ -18,11 +18,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api deps.retrofit.api
+    api deps.retrofit.gson_converter
+    api deps.retrofit.scalars_converter
+    api deps.retrofit.adapter_rxjava2
+    //    api deps.okhttp
+    api deps.rxjava
+    api deps.rxandroid
 
     implementation deps.support.appcompat_v7
     testImplementation 'junit:junit:4.12'

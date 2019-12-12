@@ -59,11 +59,7 @@ dependencies {
     implementation deps.arch.room_runtime
     annotationProcessor deps.arch.room_compiler
 
-    //Retrofit
-    api deps.retrofit.api
-    api deps.retrofit.gson_converter
-    api deps.retrofit.scalars_converter
-    api deps.retrofit.adapter_rxjava2
+
     implementation project(path: ':common')
     implementation project(path: ':compiler')
     implementation project(path: ':annotation')

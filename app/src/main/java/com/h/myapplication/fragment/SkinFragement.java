@@ -3,7 +3,6 @@ package com.h.myapplication.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import com.h.myapplication.R;
 import com.h.myapplication.base.BaseFragment;
 import com.h.myapplication.skin.Skin;
 import com.h.myapplication.skin.SkinUtils;
+import com.hiking.common.network.NetworkHelper;
+import com.hiking.common.network.rxjava.lifecycle.RxLifecycle;
 import com.hiking.common.skin.SkinManager;
 import com.hiking.common.skin.util.SkinPreference;
 import com.hiking.common.util.TLog;
@@ -27,6 +28,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.functions.Consumer;
 
 public class SkinFragement extends BaseFragment {
     private final static String TAG = SkinFragement.class.getSimpleName();
@@ -62,6 +64,36 @@ public class SkinFragement extends BaseFragment {
         } else {
             restore();
         }
+        test();
+    }
+
+    private void test() {
+        /*NetworkHelper.getIns().getUsers(1, 10)
+                .subscribe(new Consumer<ResponseBody>() {
+                    @Override
+                    public void accept(ResponseBody responseBody) throws Exception {
+                        TLog.d(responseBody.string());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        TLog.d(throwable.toString());
+                        throwable.printStackTrace();
+                    }
+                });*/
+        NetworkHelper.getIns().request()
+                .compose(RxLifecycle.bind(this).toLifecycleTransformer())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        TLog.d(s);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        TLog.d(throwable.toString());
+                    }
+                });
     }
 
     private void selectSkin(Skin skin) {
