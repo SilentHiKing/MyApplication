@@ -42,10 +42,10 @@ deps.versions = versions
 
 //support版本
 def support = [:]
-support.appcompat_v7 = "androidx.appcompat:appcompat:${versions.xsupport}"
+support.xappcompat = "androidx.appcompat:appcompat:${versions.xsupport}"
 support.tv_provider = "androidx.tvprovider:tvprovider:${versions.tv_provider}"
 support.recyclerview = "androidx.recyclerview:recyclerview:${versions.xsupport}"
-support.v4 = "androidx.legacy:legacy-support-v4:${versions.xsupport}"
+support.x_v4 = "androidx.legacy:legacy-support-v4:${versions.xsupport}"
 support.constraint = "androidx.constraintlayout:constraintlayout:${versions.constraint}"
 support.multidex = "androidx.multidex:multidex:${versions.multidex}"
 deps.support = support
