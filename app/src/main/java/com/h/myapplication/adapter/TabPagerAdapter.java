@@ -1,6 +1,5 @@
 package com.h.myapplication.adapter;
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,13 +22,12 @@ public class TabPagerAdapter extends BasePageAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+    public boolean isViewFromObject(View view, Object o) {
         return view == o;
     }
 
-    @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, int position) {
 
         BaseFragment fragment = mFragments.get(position);
 
@@ -38,7 +36,7 @@ public class TabPagerAdapter extends BasePageAdapter {
     }
 
     @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+    public void destroyItem(ViewGroup container, int position, Object object) {
         super.destroyItem(container, position, object);
     }
 }

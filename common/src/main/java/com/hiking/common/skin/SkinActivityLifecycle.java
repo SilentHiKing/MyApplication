@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.app.Application;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.view.LayoutInflaterCompat;
 import android.util.ArrayMap;
 import android.view.LayoutInflater;
 
 import com.hiking.common.skin.util.SkinThemeUtils;
 
 import java.lang.reflect.Field;
+
+import androidx.core.view.LayoutInflaterCompat;
 
 public class SkinActivityLifecycle implements Application.ActivityLifecycleCallbacks {
 

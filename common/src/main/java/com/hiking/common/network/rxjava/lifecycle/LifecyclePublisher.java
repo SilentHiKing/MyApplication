@@ -1,7 +1,6 @@
 package com.hiking.common.network.rxjava.lifecycle;
 
-import android.support.annotation.IntDef;
-
+import androidx.annotation.IntDef;
 import io.reactivex.processors.BehaviorProcessor;
 
 

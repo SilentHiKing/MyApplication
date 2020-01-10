@@ -16,7 +16,7 @@ public class SkinThemeUtils {
     };
 
     private static int[] APPCOMPAT_COLOR_PRIMARY_DARK_ATTRS = {
-            android.support.v7.appcompat.R.attr.colorPrimaryDark
+            R.attr.colorPrimaryDark
     };
     private static int[] STATUSBAR_COLOR_ATTRS = {android.R.attr.statusBarColor, android.R.attr
             .navigationBarColor};

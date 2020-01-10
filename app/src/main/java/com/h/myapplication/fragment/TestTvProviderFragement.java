@@ -3,8 +3,6 @@ package com.h.myapplication.fragment;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.media.tv.TvContractCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +13,8 @@ import android.widget.TextView;
 import com.h.myapplication.R;
 import com.h.myapplication.base.BaseFragment;
 
+import androidx.annotation.Nullable;
+import androidx.tvprovider.media.tv.TvContractCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

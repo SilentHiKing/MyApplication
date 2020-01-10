@@ -1,25 +1,25 @@
 package com.h.myapplication.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 
 import com.h.myapplication.R;
 import com.h.myapplication.adapter.TabFragmentPagerAdapter;
 import com.h.myapplication.base.BaseFragment;
+import com.h.myapplication.skin.MyTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 
 public class MainFragment extends BaseFragment {
 
     @BindView(R.id.tab_layout)
-    TabLayout mTabLayout;
+    MyTabLayout mTabLayout;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
     String[] mTabTittle;

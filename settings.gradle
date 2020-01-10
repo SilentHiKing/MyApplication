@@ -1,1 +1,1 @@
-include ':app', ':common', ':annotation', ':compiler', ':app_skin'
+include ':app', ':common', ':annotation', ':compiler', ':app_skin', ':autosize'

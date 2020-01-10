@@ -1,7 +1,8 @@
 package com.h.myapplication.architecturecomponents.model;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
 public class UserProfileViewModel extends ViewModel {
     private String userId;

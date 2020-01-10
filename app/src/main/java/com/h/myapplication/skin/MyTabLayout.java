@@ -3,9 +3,9 @@ package com.h.myapplication.skin;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
 
+import com.google.android.material.tabs.TabLayout;
 import com.h.myapplication.R;
 import com.hiking.common.skin.SkinViewSupport;
 import com.hiking.common.skin.util.SkinResource;

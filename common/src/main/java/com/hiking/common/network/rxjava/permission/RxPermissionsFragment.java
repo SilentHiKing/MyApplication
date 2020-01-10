@@ -5,14 +5,12 @@ import android.app.Fragment;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
-
-import com.hiking.common.network.rxjava.permission.Permission;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
 import io.reactivex.subjects.PublishSubject;
 
 

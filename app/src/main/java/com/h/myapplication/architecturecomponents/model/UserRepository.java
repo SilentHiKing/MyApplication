@@ -1,14 +1,14 @@
 package com.h.myapplication.architecturecomponents.model;
 
-import android.arch.lifecycle.LiveData;
 
+import com.h.myapplication.architecturecomponents.bean.User;
 import com.h.myapplication.architecturecomponents.bean.UserDao;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
 
+import androidx.lifecycle.LiveData;
 import retrofit2.Response;
-import com.h.myapplication.architecturecomponents.bean.User;
 
 public class UserRepository {
 

@@ -25,6 +25,10 @@ public class OkHttpClientFactory {
         return instance;
     }
 
+    public void setClient(OkHttpClient client) {
+        this.client = client;
+    }
+
     public OkHttpClient getClient() {
         if (client == null) {
             synchronized (OkHttpClientFactory.class) {
@@ -39,6 +43,7 @@ public class OkHttpClientFactory {
                             .readTimeout(mReadTimeout, TimeUnit.SECONDS)
                             .writeTimeout(mReadTimeout, TimeUnit.SECONDS)
                             .addInterceptor(new LogInterceptor().setLevel(LogInterceptor.Level.BODY))
+                            .addNetworkInterceptor(new NetCacheInterceptor())
                             .cache(cache);
                     TLSSocketFactory socketFactory = TLSSocketFactory.create();
                     if (socketFactory != null) {

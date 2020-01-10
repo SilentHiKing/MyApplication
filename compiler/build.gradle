@@ -5,7 +5,7 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // javac tools.jar
-    compile files(Jvm.current().toolsJar)
+    implementation files(Jvm.current().toolsJar)
 
     // AutoService: 由 google 开发,
     // 用于生成 META-INF/services/javax.annotation.processing.Processor
@@ -23,5 +23,5 @@ tasks.withType(JavaCompile) {
     options.encoding = "utf-8"
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+sourceCompatibility = "8"
+targetCompatibility = "8"

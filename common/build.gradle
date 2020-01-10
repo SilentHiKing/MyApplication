@@ -7,13 +7,30 @@ android {
         targetSdkVersion build_versions.TARGET_SDK
         versionCode app_version.VERSION_CODE
         versionName app_version.VERSION_NAME
+        multiDexEnabled true
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "GITHUB_CLIENT_ID", GITHUB_CLIENT_ID
+        buildConfigField "String", "GITHUB_CLIENT_SECRET", GITHUB_CLIENT_SECRET
+
+
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
 
     }
 
     buildTypes {
         release {
+            multiDexKeepFile file('multidex-config.txt')
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            multiDexKeepFile file('multidex-config.txt')
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -26,17 +43,46 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api deps.retrofit.api
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    api (deps.retrofit.api){
+        //排除某一个库依赖
+        exclude group: 'com.squareup.okhttp3',module: 'okhttp'
+    }
     api deps.retrofit.gson_converter
     api deps.retrofit.scalars_converter
     api deps.retrofit.adapter_rxjava2
-    //    api deps.okhttp
+//    api deps.okhttp
     api deps.rxjava
     api deps.rxandroid
+    api deps.rxbinding
+    //jetpack
+    api deps.arch.paging_runtime
+    api deps.arch.paging_rxjava2
+    api deps.arch.navigation_fragment
+    api deps.arch.navigation_ui
+//    api deps.arch.lifecycle_runtime
+    api deps.arch.lifecycle_extensions
+    api deps.arch.lifecycle_common_java8
+//    annotationProcessor deps.arch.lifecycle_compiler
+    api deps.arch.room_runtime
+    annotationProcessor deps.arch.room_compiler
 
-    implementation deps.support.appcompat_v7
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //glide
+    api deps.glide.api
+    annotationProcessor deps.glide.compiler
+    api deps.glide.annotations
+    api deps.glide.integration
+    //arouter
+    api deps.arouter.api
+    annotationProcessor deps.arouter.compiler
+
+
+    api deps.support.appcompat_v7
+    api deps.support.multidex
+
+
+
+    api project(path: ':autosize')
 }

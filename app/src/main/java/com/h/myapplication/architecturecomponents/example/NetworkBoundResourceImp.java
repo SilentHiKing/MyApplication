@@ -1,8 +1,9 @@
 package com.h.myapplication.architecturecomponents.example;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
-import android.support.annotation.MainThread;
+
+import androidx.annotation.MainThread;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
 public abstract class NetworkBoundResourceImp<ResultType,RequestType> extends NetworkBoundResource {
     private final MediatorLiveData<Resource<ResultType>> result = new MediatorLiveData<>();

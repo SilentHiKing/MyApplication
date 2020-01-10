@@ -3,7 +3,6 @@ package com.hiking.common.skin;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +13,8 @@ import com.hiking.common.skin.util.SkinThemeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.core.view.ViewCompat;
 
 public class SkinAttribute {
 

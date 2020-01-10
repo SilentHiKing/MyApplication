@@ -1,10 +1,7 @@
 package com.h.myapplication.architecturecomponents.view;
 
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +10,10 @@ import com.h.myapplication.R;
 import com.h.myapplication.architecturecomponents.model.User;
 import com.h.myapplication.architecturecomponents.model.UserProfileViewModel;
 import com.h.myapplication.base.BaseFragment;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 public class UserProfileFragment extends BaseFragment {
     private static final String UID_KEY = "uid";

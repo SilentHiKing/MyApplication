@@ -4,10 +4,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 
@@ -48,7 +48,31 @@ public class RxLifecycle {
         return bind(fragment.getLifecyclePublisher());
     }
 
-    public static RxLifecycle bind(@NonNull android.support.v4.app.Fragment targetFragment) {
+    public static RxLifecycle bind(@NonNull androidx.fragment.app.Fragment targetFragment) {
+        return bind(targetFragment.getChildFragmentManager());
+    }
+
+    public static RxLifecycle bind(androidx.fragment.app.FragmentManager fragmentManager) {
+        BindingXFragment fragment = (BindingXFragment) fragmentManager.findFragmentByTag(FRAGMENT_TAG);
+        if (fragment == null) {
+            fragment = new BindingXFragment();
+
+            final  androidx.fragment.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.add(fragment, FRAGMENT_TAG);
+            transaction.commit();
+        } else if (fragment.isDetached()) {
+
+            final androidx.fragment.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.attach(fragment);
+            transaction.commit();
+        }
+
+        return bind(fragment.getLifecyclePublisher());
+    }
+
+
+    //TODO
+    /*public static RxLifecycle bind(@NonNull android.support.v4.app.Fragment targetFragment) {
         return bind(targetFragment.getChildFragmentManager());
     }
 
@@ -68,7 +92,7 @@ public class RxLifecycle {
         }
 
         return bind(fragment.getLifecyclePublisher());
-    }
+    }*/
 
     public static RxLifecycle bind(@NonNull LifecyclePublisher lifecyclePublisher) {
         return new RxLifecycle(lifecyclePublisher);

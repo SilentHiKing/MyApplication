@@ -377,6 +377,9 @@ public class RetrofitUrlManager {
      * 获取全局 BaseUrl
      */
     public synchronized HttpUrl getGlobalDomain() {
+//        TODO
+//        为了此Client公用，不要设置全局GLOBAL_DOMAIN_NAME;
+//        return null;
         return mDomainNameHub.get(GLOBAL_DOMAIN_NAME);
     }
 

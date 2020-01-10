@@ -8,3 +8,12 @@
 /build
 /captures
 .externalNativeBuild
+
+/annotation/build
+/app/build
+/app_skin/build
+/autosize/build
+/common/build
+/compiler/build
+
+

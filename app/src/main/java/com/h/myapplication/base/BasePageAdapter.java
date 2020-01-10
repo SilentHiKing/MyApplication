@@ -1,6 +1,7 @@
 package com.h.myapplication.base;
 
-import android.support.v4.view.PagerAdapter;
+
+import androidx.viewpager.widget.PagerAdapter;
 
 public abstract class BasePageAdapter extends PagerAdapter {
 

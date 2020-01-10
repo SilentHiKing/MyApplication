@@ -1,11 +1,11 @@
 package com.h.myapplication.architecturecomponents.example;
 
-import android.arch.lifecycle.LiveData;
-import android.support.annotation.MainThread;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.WorkerThread;
 
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
+import androidx.lifecycle.LiveData;
 import retrofit2.Call;
 
 // ResultType: Type for the Resource data

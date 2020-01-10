@@ -4,29 +4,36 @@
 
 def versions = [:]
 versions.support = "28.0.0"
-versions.constraint_layout = "1.1.3"
+versions.constraint = "2.0.0-alpha3"
 versions.junit = "4.12"
 versions.test_runner = "1.0.2"
 versions.test_espresso = "3.0.2"
 versions.multidex = "1.0.2"
-versions.arouter_api = "1.4.0"
-versions.arouter_compile = "1.2.1"
+versions.arouter_api = "1.5.0"
+versions.arouter_compile = "1.2.2"
 versions.arouter_register = "1.0.0"
-versions.gradle = "3.1.4"
-versions.retrofit = '2.7.0'
+versions.gradle = "3.5.0"
+versions.retrofit = '2.7.1'
 versions.rxjava = '3.0.0-RC2'
 versions.rxandroid = '2.1.1'
-versions.okhttp = '4.2.0'
+versions.rxbinding = '2.1.0'
+versions.okhttp = '3.9.1'
 versions.glide = '4.8.0'
 versions.tvplayer = '5.0.1.253'
 versions.playerx = '5.0.1.253'
-versions.butterknife = '9.0.0-rc1'
+versions.butterknife = '10.2.1'
 versions.eventbus = '3.1.1'
 versions.statistic = "3.4.6.4"
 versions.tinker = "1.9.9"
 versions.bugly = "2.6.5"
 versions.bugly_native = "3.3.1"
-versions.arch = "1.1.1"
+versions.arch = "2.1.0"
+versions.paging = "2.1.0"
+versions.navigation = "2.1.0"
+versions.room = "2.1.0"
+versions.xsupport = "1.0.0"
+versions.multidex = "2.0.0"
+versions.tv_provider = "1.0.0"
 
 def deps = [:]
 ext.deps = deps
@@ -35,14 +42,12 @@ deps.versions = versions
 
 //support版本
 def support = [:]
-support.appcompat_v7 = "com.android.support:appcompat-v7:${versions.support}"
-support.design = "com.android.support:design:${versions.support}"
-support.tv_provider = "com.android.support:support-tv-provider:${versions.support}"
-support.recyclerview = "com.android.support:recyclerview-v7:${versions.support}"
-support.cardview = "com.android.support:cardview-v7:${versions.support}"
-support.v4 = "com.android.support:support-v4:${versions.support}"
-support.constraint = "com.android.support.constraint:constraint-layout:${versions.constraint_layout}"
-support.multidex = "com.android.support:multidex:${versions.multidex}"
+support.appcompat_v7 = "androidx.appcompat:appcompat:${versions.xsupport}"
+support.tv_provider = "androidx.tvprovider:tvprovider:${versions.tv_provider}"
+support.recyclerview = "androidx.recyclerview:recyclerview:${versions.xsupport}"
+support.v4 = "androidx.legacy:legacy-support-v4:${versions.xsupport}"
+support.constraint = "androidx.constraintlayout:constraintlayout:${versions.constraint}"
+support.multidex = "androidx.multidex:multidex:${versions.multidex}"
 deps.support = support
 
 //test版本
@@ -58,7 +63,7 @@ deps.junit = junit
 //ARouter版本
 def arouter = [:]
 arouter.api = "com.alibaba:arouter-api:${versions.arouter_api}"
-arouter.compile = "com.alibaba:arouter-compiler:${versions.arouter_compile}"
+arouter.compiler = "com.alibaba:arouter-compiler:${versions.arouter_compile}"
 arouter.register = "com.alibaba:arouter-register:${versions.arouter_register}"
 deps.arouter = arouter
 
@@ -82,6 +87,9 @@ deps.rxjava = rxjava
 def rxandroid = "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
 deps.rxandroid = rxandroid
 
+def rxbinding ="com.jakewharton.rxbinding2:rxbinding:${versions.rxbinding}"
+deps.rxbinding=rxbinding
+
 //okhttp
 def okhttp = "com.squareup.okhttp3:okhttp:${versions.okhttp}"
 deps.okhttp = okhttp
@@ -89,8 +97,9 @@ deps.okhttp = okhttp
 //Glide版本
 def glide = [:]
 glide.api = "com.github.bumptech.glide:glide:${versions.glide}"
-glide.compile = "com.github.bumptech.glide:compiler:${versions.glide}"
+glide.compiler = "com.github.bumptech.glide:compiler:${versions.glide}"
 glide.annotations = "com.github.bumptech.glide:annotations:${versions.glide}"
+glide.integration = "com.github.bumptech.glide:okhttp3-integration:${versions.glide}"
 deps.glide = glide
 
 
@@ -98,7 +107,7 @@ deps.glide = glide
 def butterknife = [:]
 butterknife.gradle_plugin = "com.jakewharton:butterknife-gradle-plugin:${versions.butterknife}"
 butterknife.implementation = "com.jakewharton:butterknife:${versions.butterknife}"
-butterknife.annotations = "com.jakewharton:butterknife-compiler:${versions.butterknife}"
+butterknife.compiler = "com.jakewharton:butterknife-compiler:${versions.butterknife}"
 deps.butterknife = butterknife
 
 //eventbus
@@ -109,10 +118,16 @@ deps.eventbus = eventbus
 //arch
 def arch = [:]
 deps.arch = arch
-arch.lifecycle_extensions = "android.arch.lifecycle:extensions:${versions.arch}"
-arch.lifecycle_compiler = "android.arch.lifecycle:compiler:${versions.arch}"
-arch.room_runtime = "android.arch.persistence.room:runtime:${versions.arch}"
-arch.room_compiler = "android.arch.persistence.room:compiler:${versions.arch}"
+arch.lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:${versions.arch}"
+arch.lifecycle_extensions = "androidx.lifecycle:lifecycle-extensions:${versions.arch}"
+arch.lifecycle_common_java8 = "androidx.lifecycle:lifecycle-common-java8:${versions.arch}"
+arch.lifecycle_compiler = "androidx.lifecycle:lifecycle-compiler:${versions.arch}"
+arch.room_runtime = "androidx.room:room-runtime:${versions.room}"
+arch.room_compiler = "androidx.room:room-compiler:${versions.room}"
+arch.paging_runtime = "androidx.paging:paging-runtime:${versions.paging}"
+arch.paging_rxjava2 = "androidx.paging:paging-rxjava2:${versions.paging}"
+arch.navigation_fragment = "androidx.navigation:navigation-fragment:${versions.navigation}"
+arch.navigation_ui = "androidx.navigation:navigation-ui:${versions.navigation}"
 
 
 //编译版本
@@ -130,6 +145,8 @@ def app_version = [:]
 app_version.VERSION_CODE = props.getProperty("VERSION_CODE") as int
 app_version.VERISON_NAME = props.getProperty("VERSION_NAME")
 ext.app_version = app_version
+ext.GITHUB_CLIENT_ID = props.getProperty("GITHUB_CLIENT_ID")
+ext.GITHUB_CLIENT_SECRET = props.getProperty("GITHUB_CLIENT_SECRET")
 
 ext.APP_PACKAGE_NAME = "com.h.myapplication"
 

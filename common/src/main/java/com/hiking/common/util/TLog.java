@@ -6,7 +6,6 @@ import android.util.Log;
 /**
  * Log工具，根据build任务决定log级别
  * 只有ERROR级别的log才会写入文件
- *
  */
 public final class TLog {
 
@@ -109,6 +108,10 @@ public final class TLog {
 
     private static int getTagLevel() {
         return Log.VERBOSE;
+    }
+
+    public static boolean isDebug() {
+        return true;
     }
 
 }
