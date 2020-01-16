@@ -1,5 +1,6 @@
 package com.h.myapplication.login;
 
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
 
 import com.h.myapplication.base.repo.ILocalDataSource;
@@ -18,12 +19,17 @@ import com.hiking.common.util.Util;
 
 import java.util.Arrays;
 
+import io.reactivex.BackpressureStrategy;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.h.myapplication.login.UserManager.mUserInfo;
 
 public class LoginRepository {
     public LoginRemoteDataSource mLoginRemoteDataSource;
@@ -58,6 +64,7 @@ public class LoginRepository {
                             mLoginLocalDataSource.clearUser();
                         } else {
                             //保存用户信息
+                            mUserInfo = either.getLeft();
                             TLog.d(LoginFragment.TAG, "已经登录成功");
                         }
                     }
@@ -140,15 +147,22 @@ public class LoginRepository {
             })/*.subscribeOn(Schedulers.io())*/;
         }
 
+        @SuppressLint("CheckResult")
         public Flowable<AutoLoginEvent> fetchAutoLogin() {
-            LoginUserInfo info = mLoginUserInfoDao.getUser();
-            boolean isAuto = (!TextUtils.isEmpty(info.username)
-                    && !TextUtils.isEmpty(info.password)
-                    && info.isAutoLogin);
-            return Flowable.just(isAuto ? new AutoLoginEvent().setAutoLogin(isAuto)
-                    .setUsername(info.username).setPassword(info.password)
-                    : new AutoLoginEvent().setAutoLogin(isAuto)
-            );
+            return Flowable.create(new FlowableOnSubscribe<AutoLoginEvent>() {
+                @Override
+                public void subscribe(FlowableEmitter<AutoLoginEvent> emitter) throws Exception {
+                    TLog.d(LoginFragment.TAG_1,"获取本地用户信息");
+                    LoginUserInfo info = mLoginUserInfoDao.getUser();
+                    boolean isAuto = (!TextUtils.isEmpty(info.username)
+                            && !TextUtils.isEmpty(info.password)
+                            && info.isAutoLogin);
+                    emitter.onNext(isAuto ? new AutoLoginEvent().setAutoLogin(isAuto)
+                            .setUsername(info.username).setPassword(info.password)
+                            : new AutoLoginEvent().setAutoLogin(isAuto));
+                    emitter.onComplete();
+                }
+            }, BackpressureStrategy.BUFFER).subscribeOn(Schedulers.io());
         }
     }
 }

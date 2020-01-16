@@ -11,7 +11,7 @@ public class UserInfo {
         return this;
     }
 
-    String login;
+    public String login;
     int id;
     @SerializedName("node_id")
     String nodeId;

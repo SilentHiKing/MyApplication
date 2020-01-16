@@ -13,7 +13,7 @@
 		android:id="@+id/toolbar"
 		android:layout_width="0dp"
 		android:layout_height="?attr/actionBarSize"
-		android:background="@color/colorAccent"
+		android:background="@color/colorPrimaryDark"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
@@ -83,7 +83,6 @@
 
 					<AutoCompleteTextView
 						android:id="@+id/login_username"
-						android:text="1360096789@qq.com"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:hint="@string/login_hint_username"
@@ -100,7 +99,6 @@
 					android:paddingRight="@dimen/activity_horizontal_margin">
 
 					<AutoCompleteTextView
-						android:text="h123581347"
 						android:id="@+id/login_password"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
@@ -132,6 +130,7 @@
 			android:id="@+id/login_progressBar"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:visibility="gone"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"

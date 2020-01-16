@@ -1,6 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="skinTypeface">@string/typeface</item>
+
+    </style>
+
+
+    <!-- Base application  theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="android:windowActionBar">false</item>
@@ -12,11 +28,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="skinTypeface">@string/typeface</item>
-
-        <!--<item name="android:windowIsTranslucent">@null</item>
-        <item name="android:windowDisablePreview">true</item>-->
-
-        <!--<item name="android:windowBackground">@mipmap/ic_launcher_round</item>-->
 
     </style>
 

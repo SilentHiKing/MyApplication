@@ -12,6 +12,13 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/repoFragment"
+        android:name="com.h.myapplication.github.RepoFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_repo">
 
     </fragment>
 
@@ -24,7 +31,9 @@
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
-
+        <action
+            android:id="@+id/action_loginFragment_to_repoFragment"
+            app:destination="@id/repoFragment" />
 
     </fragment>
 

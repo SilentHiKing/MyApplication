@@ -2,11 +2,15 @@ package com.hiking.common;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Debug;
+import android.os.Looper;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hiking.common.skin.SkinManager;
+import com.hiking.common.util.BlockLogPrinter;
 import com.hiking.common.util.TLog;
 
+import androidx.core.os.TraceCompat;
 import androidx.multidex.MultiDex;
 
 
@@ -29,7 +33,14 @@ public class MyApplication extends Application {
         TLog.d("xdpi=" + this.getResources().getDisplayMetrics().xdpi);
         TLog.d("widthPixels=" + this.getResources().getDisplayMetrics().widthPixels);
 //        AutoSize.initCompatMultiProcess(this);
+        Looper.getMainLooper().setMessageLogging(new BlockLogPrinter());
+        String filePath = getExternalFilesDir(null)+"/皮肤初始化.trace";
+        TLog.d(filePath);
+        Debug.startMethodTracing(filePath);
+        TraceCompat.beginSection("皮肤初始化");
         SkinManager.init(this);
+        TraceCompat.endSection();
+        Debug.stopMethodTracing();
         initArouter();
     }
 

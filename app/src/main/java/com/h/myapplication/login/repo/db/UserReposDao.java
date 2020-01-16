@@ -12,7 +12,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 @Dao
-interface UserReposDao {
+public interface UserReposDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<UserRepo> repos);
 

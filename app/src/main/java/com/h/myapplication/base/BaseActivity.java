@@ -29,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         if (mUnbinder != null) {
             mUnbinder.unbind();
+            mUnbinder = null;
         }
 
     }

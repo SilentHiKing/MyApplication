@@ -53,7 +53,8 @@ dependencies {
     //api deps.okhttp
     api deps.rxjava
     api deps.rxandroid
-    api deps.rxbinding
+    api deps.rxbinding.base
+    api deps.rxbinding.recyclerview
     //jetpack
     api deps.arch.paging_runtime
     api deps.arch.paging_rxjava2

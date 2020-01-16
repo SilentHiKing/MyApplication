@@ -2,9 +2,7 @@ package com.h.myapplication.fragment;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.h.myapplication.R;
@@ -26,7 +24,6 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
 
@@ -38,19 +35,22 @@ public class SkinFragement extends BaseFragment {
     Button change_skin;
     List<Skin> skins = new ArrayList<>();
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_skin, container, false);
-        ButterKnife.bind(this, view);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         skins.add(new Skin("e0893ca73a972d82bcfc3a5a7a83666d",
                 "1111111.skin", "app_skin-debug.apk"));
-        return view;
     }
 
+
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public int generateLayoutResID() {
+        return R.layout.fragment_skin;
+    }
+
+
+    @Override
+    public void initEvent(View view, Bundle savedInstanceState) {
         change_skin.requestFocus();
     }
 

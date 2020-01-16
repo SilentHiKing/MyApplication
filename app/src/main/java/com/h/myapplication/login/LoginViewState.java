@@ -6,14 +6,12 @@ import androidx.annotation.Nullable;
 
 public class LoginViewState {
     final public boolean isLoading;
-    final public boolean useAutoLoginEvent;
     final public Throwable throwable;
     final public UserInfo loginInfo;
     final public AutoLoginEvent autoLoginEvent;
 
     public LoginViewState(Builder builder) {
         isLoading = builder.isLoading;
-        useAutoLoginEvent = builder.useAutoLoginEvent;
         throwable = builder.throwable;
         loginInfo = builder.loginInfo;
         autoLoginEvent = builder.autoLoginEvent;
@@ -37,7 +35,6 @@ public class LoginViewState {
         if (obj instanceof LoginViewState) {
             if (obj != this) {
                 if (((LoginViewState) obj).isLoading != isLoading
-                        || ((LoginViewState) obj).useAutoLoginEvent != useAutoLoginEvent
                         || ((LoginViewState) obj).throwable != throwable
                         || ((LoginViewState) obj).loginInfo != loginInfo
                         || ((LoginViewState) obj).autoLoginEvent != autoLoginEvent
@@ -53,7 +50,6 @@ public class LoginViewState {
 
     public static class Builder {
         public boolean isLoading;
-        public boolean useAutoLoginEvent;
         public Throwable throwable;
         public UserInfo loginInfo;
         public AutoLoginEvent autoLoginEvent;
@@ -66,10 +62,6 @@ public class LoginViewState {
             return this;
         }
 
-        public Builder setUseAutoLoginEvent(boolean useAutoLoginEvent) {
-            this.useAutoLoginEvent = useAutoLoginEvent;
-            return this;
-        }
 
         public Builder setThrowable(Throwable throwable) {
             this.throwable = throwable;
@@ -88,7 +80,6 @@ public class LoginViewState {
 
         Builder(LoginViewState state) {
             isLoading = state.isLoading;
-            useAutoLoginEvent = state.useAutoLoginEvent;
             throwable = state.throwable;
             loginInfo = state.loginInfo;
             autoLoginEvent = state.autoLoginEvent;

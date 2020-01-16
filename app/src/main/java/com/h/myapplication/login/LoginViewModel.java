@@ -7,6 +7,7 @@ import com.h.myapplication.bean.Errors;
 import com.hiking.common.bean.login.UserInfo;
 import com.hiking.common.network.rxjava.BehaviorSubjectUtil;
 import com.hiking.common.network.rxjava.bean.Either;
+import com.hiking.common.util.TLog;
 
 import androidx.lifecycle.ViewModel;
 import io.reactivex.Observable;
@@ -22,29 +23,33 @@ public class LoginViewModel extends ViewModel {
         mLoginRepository = loginRepository;
     }
 
-    private final BehaviorSubject<LoginViewState> mViewStateSubject = BehaviorSubject.createDefault(LoginViewState.init());
+    private final BehaviorSubject<LoginViewState> mViewStateSubject = BehaviorSubject.create();
 
     public Observable<LoginViewState> observeViewState() {
+        mViewStateSubject.onNext(LoginViewState.init());
         return mViewStateSubject.hide().distinctUntilChanged();
     }
 
-    public void autoLogin(){
+    public void autoLogin() {
+        TLog.d(LoginFragment.TAG_1, "开始");
         mLoginRepository.fetchAutoLogin()
-                .singleOrError()
+//                .singleOrError()
                 .onErrorReturn(new Function<Throwable, AutoLoginEvent>() {
                     @Override
                     public AutoLoginEvent apply(Throwable throwable) throws Exception {
+                        TLog.d(LoginFragment.TAG_1, throwable.toString());
                         return new AutoLoginEvent();
                     }
                 })
                 .subscribe(new Consumer<AutoLoginEvent>() {
                     @Override
                     public void accept(AutoLoginEvent autoLoginEvent) throws Exception {
+                        TLog.d(LoginFragment.TAG_1, "获取到用户信息成功,start");
                         BehaviorSubjectUtil.assertNoNullValue(mViewStateSubject);
+                        TLog.d(LoginFragment.TAG_1, "获取到用户信息成功,end");
                         mViewStateSubject.onNext(mViewStateSubject.getValue().newBuilder()
                                 .setIsLoading(false)
                                 .setAutoLoginEvent(autoLoginEvent)
-                                .setUseAutoLoginEvent(autoLoginEvent.autoLogin)
                                 .setLoginInfo(null)
                                 .setThrowable(null)
                                 .build());
@@ -58,12 +63,13 @@ public class LoginViewModel extends ViewModel {
         BehaviorSubjectUtil.assertNoNullValue(mViewStateSubject);
         mViewStateSubject.onNext(mViewStateSubject.getValue().newBuilder()
                 .setIsLoading(false)
-                .setUseAutoLoginEvent(false)
+                .setAutoLoginEvent(null)
                 .setLoginInfo(null)
                 .setThrowable(null)
                 .build());
 
     }
+
 
     public void login(String username, String password) {
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {

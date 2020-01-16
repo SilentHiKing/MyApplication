@@ -39,6 +39,7 @@ public class GitAuthInterceptor implements Interceptor {
             if (url.toString().contains(Api.APP_GITHUB_DOMAIN)) {
                 String auth = getAuthorization();
                 if (!TextUtils.isEmpty(auth)) {
+                    TLog.d(auth);
                     request = request.newBuilder()
                             .addHeader("Authorization", auth)
                             .build();

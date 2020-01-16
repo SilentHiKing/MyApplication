@@ -24,7 +24,6 @@ public class RxUtil {
         if (o instanceof Fragment) {
             return RxLifecycle.bind((Fragment) o).toLifecycleTransformer();
         }
-
         if (o instanceof FragmentManager) {
             return RxLifecycle.bind((FragmentManager) o).toLifecycleTransformer();
         }
