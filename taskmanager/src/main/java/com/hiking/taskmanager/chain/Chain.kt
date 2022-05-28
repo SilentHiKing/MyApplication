@@ -1,6 +1,6 @@
 package com.hiking.taskmanager.chain
 
-class Chain(private var interceptors: MutableList<Interceptor>) {
+open class Chain(private var interceptors: MutableList<Interceptor>) {
 
     companion object {
         fun create(initialCapacity: Int = 0): Builder {
@@ -17,12 +17,16 @@ class Chain(private var interceptors: MutableList<Interceptor>) {
                 index++
                 interceptor.intercept(this)
             }
-            else ->{
+            else -> {
                 clearAllInterceptors()
+                chainEnd()
             }
         }
     }
 
+    open fun chainEnd() {
+
+    }
 
 
     private fun clearAllInterceptors() {
@@ -50,6 +54,17 @@ class Builder(private val initialCapacity: Int = 0) {
     fun build(): Chain {
         return Chain(interceptors)
     }
+
+    fun <T : Chain?> build(service: Class<T>): T? {
+        try {
+            return service.getConstructor(MutableList::class.java).newInstance(interceptors)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
+
 }
 
 
