@@ -68,6 +68,7 @@ class Worker<T> implements Runnable, IWorker {
     static void setDefaultThreadPoolExecutor(ExecutorService threadPoolExecutor) {
         if (threadPoolExecutor != null) {
             defaultThreadPoolExecutor = threadPoolExecutor;
+
         }
     }
 

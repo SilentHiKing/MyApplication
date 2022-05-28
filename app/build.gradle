@@ -11,12 +11,10 @@ android {
         versionCode app_version.VERSION_CODE
         versionName app_version.VERISON_NAME
         multiDexEnabled true
+
         javaCompileOptions {
             annotationProcessorOptions {
-                includeCompileClasspath = true
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString(),
-                             AROUTER_MODULE_NAME  : project.getName()
-                ]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
 

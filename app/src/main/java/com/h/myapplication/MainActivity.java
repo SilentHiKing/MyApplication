@@ -1,5 +1,7 @@
 package com.h.myapplication;
 
+import android.content.res.Configuration;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.h.myapplication.base.BaseActivity;
 import com.h.myapplication.login.interceptor.GitAuthInterceptor;
@@ -19,4 +21,8 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 }

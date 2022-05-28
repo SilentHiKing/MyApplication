@@ -12,7 +12,8 @@ versions.multidex = "1.0.2"
 versions.arouter_api = "1.5.0"
 versions.arouter_compile = "1.2.2"
 versions.arouter_register = "1.0.0"
-versions.gradle = "3.5.0"
+versions.gradle = "7.1.0"
+versions.kotlin_gradle_plugin = "1.6.10"
 versions.retrofit = '2.7.1'
 versions.rxjava = '3.0.0-RC2'
 versions.rxandroid = '2.1.1'
@@ -71,6 +72,10 @@ deps.arouter = arouter
 //gradle版本
 def gradle = "com.android.tools.build:gradle:${versions.gradle}"
 deps.gradle = gradle
+
+//kotlin_gradle_plugin版本
+def kotlin_gradle_plugin = "com.android.tools.build:gradle:${versions.kotlin_gradle_plugin}"
+deps.kotlin_gradle_plugin = kotlin_gradle_plugin
 
 //retrofit版本
 def retrofit = [:]
