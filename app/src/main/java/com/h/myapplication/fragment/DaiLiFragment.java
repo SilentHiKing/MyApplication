@@ -28,6 +28,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.h.myapplication.R;
 import com.h.myapplication.base.BaseFragment;
 import com.h.myapplication.test.Book;
+import com.h.myapplication.test_taskmanager.DialogTest;
 import com.hiking.common.arouter.ArouterPath;
 import com.hiking.common.glide.GlideApp;
 import com.hiking.common.network.rxjava.RxUtil;
@@ -66,7 +67,8 @@ public class DaiLiFragment extends BaseFragment {
 
     @OnClick(R.id.sure)
     public void click() {
-        GlideApp.with(img).load("https://www.baidu.com/img/bd_logo1.png?qua=high").into(img);
+        DialogTest.INSTANCE.show(getContext());
+        /*GlideApp.with(img).load("https://www.baidu.com/img/bd_logo1.png?qua=high").into(img);
         ARouter.getInstance().build(ArouterPath.PATH_LOGIN).navigation();
         Looper.myLooper().setMessageLogging(new BlockLogPrinter());
         testLoad();
@@ -88,7 +90,7 @@ public class DaiLiFragment extends BaseFragment {
             }
         }.start();
         getFragmentManager().beginTransaction().add(new DaiLiFragment(),"hfsdaf").commitNow();
-        testAnimate();
+        testAnimate();*/
 
     }
 

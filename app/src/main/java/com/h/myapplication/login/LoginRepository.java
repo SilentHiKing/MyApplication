@@ -83,7 +83,7 @@ public class LoginRepository {
         public Flowable<Either<UserInfo, Throwable>> login() {
             return NetworkHelper.getIns().authorizations(new LoginRequest.Builder()
                     .setScopes(Arrays.asList("user", "repo", "gist", "notifications"))
-                    .setNote(BuildConfig.APPLICATION_ID)
+                    .setNote(Util.getApplicationByReflect().getPackageName())
                     .setClientId(BuildConfig.GITHUB_CLIENT_ID)
                     .setClientSecret(BuildConfig.GITHUB_CLIENT_SECRET)
                     .build())

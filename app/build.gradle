@@ -1,4 +1,7 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android' version '1.6.10'
+}
 
 
 android {
@@ -50,6 +53,10 @@ android {
             universalApk true
         }
     }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
     configurations.all {
 
         Configuration configuration ->
@@ -70,6 +77,7 @@ dependencies {
 
 
     implementation deps.butterknife.implementation
+    implementation project(path: ':taskmanager')
     annotationProcessor deps.butterknife.compiler
 
     implementation deps.arch.room_runtime
@@ -77,6 +85,9 @@ dependencies {
 
     implementation deps.arouter.api
     annotationProcessor deps.arouter.compiler
+
+    //https://blog.csdn.net/u011050129/article/details/123282983
+    implementation 'com.google.guava:guava:27.0.1-android'
 
 
     implementation project(path: ':common')
